@@ -1,0 +1,26 @@
+	Creating Appliance AC with parameters Temprature having values range 16-30 and DEFAULT VALUE : 25
+	Creating Appliance Door with parameters State having values range <ON>,<OFF> and DEFAULT VALUE : <OFF>
+	Creating Appliance TubeLight with parameters Power having values range 0-500 and DEFAULT VALUE : 100
+	Creating Appliance LightSensor with parameters AmbientLux having values range 0-100000 and DEFAULT VALUE : 5000
+	Creating Appliance Fan with parameters RPM having values range 0-5000 and DEFAULT VALUE : 100
+	Creating Building named L5 with 5 AC Appliances.
+	Creating Building named JUP with 150 Fan Appliances.
+	Creating Building named NEP with 100 TubeLight Appliances.
+
+	SENSING --> Parameter Temprature for appliance AC with index 1 in building L5 sensed as : 25
+
+	CONTROLLING --> Control in L5 building for appliance AC with index 1 set as : 21
+
+	SENSING --> Parameter Temprature for appliance AC with index 1 in building L5 sensed as : 21
+
+	SENSING --> Parameter RPM for appliance Fan with index 10 in building JUP sensed as : 100
+
+	CONTROLLING --> Control in JUP building for appliance Fan with index 10 set as : 200
+
+	SENSING --> Parameter RPM for appliance Fan with index 10 in building JUP sensed as : 200
+
+	SENSING --> Parameter Power for appliance TubeLight with index 5 in building NEP sensed as : 100
+
+	CONTROLLING --> Control in NEP building for appliance TubeLight with index 5 set as : 150
+
+	SENSING --> Parameter Power for appliance TubeLight with index 5 in building NEP sensed as : 150

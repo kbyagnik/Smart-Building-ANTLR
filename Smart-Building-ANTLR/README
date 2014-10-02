@@ -1,0 +1,78 @@
+CSL202-Programming Paradigms And Pragmatics
+ASSIGNMENT-3 SMART-BUILDING (using ANTLR Tools for Lexing Parsing)
+
+Name : KAUSHAL YAGNIK (Entry No. 2012CSB1039)
+
+Code is written for simulating automatic control of operations on various electric appliances in a 'smart-building' using a centrally controlled program with a given grammar format which is specified.
+
+______________________________________INSTRUCTIONS FOR EXECUTION :_______________________________________________________________
+
+The attached program is written in JAVA language written in Eclipse IDE along with ANTLR-Tools version 2.1.2 plugin.
+The program can be executed as a complete project in the Eclipse IDE provided it contain ANTLR-Tools plugin and with appropriate .JAR External Reference Library (ANTLR 3.5.1).
+
+_____________________________________________GRAMMAR :________________________________________________________________________
+
+The instructions must come in the following sequence when giving the input for grammar:
+1) Creating appliance definition
+	DEFINITIONS:
+		#appliance_name#  IS AN APPLIANCE WITH PARAMETERS [ #parameter_name# : #parameter_value_range#: #default_value# ] ;
+	where 	#appliance_name# is a valid identifier
+		#parameter_name# is a valid identifier
+		#parameter_value_range# can either be a range of integers or list of strings
+		#default_value# is any value in accepted range/list
+		
+	eg.	AC  IS AN APPLIANCE WITH PARAMETERS [Temprature: (16-30):25,CoolingLevel:(0-40):20,Humidity:(0-100):20] ;
+		Door IS AN APPLIANCE WITH PARAMETERS [State:(<ON>,<OFF>):<OFF>];
+		
+2) Creating building definition
+	DEFINITIONS:
+		#building_name#  IS A BUILDING HAVING [ #appliance_name# : #no_of_appliance# ] ;
+	where 	#appliance_name# is a valid identifier
+		#building_name# is a valid identifier
+		#no_of_appliance# is an integer
+	
+	eg.	L5 IS A BUILDING HAVING [AC:5,Fan:10,Tubelight:5] ; 
+		JUP IS A BUILDING HAVING [Fan: 150,Door:50] ; 
+		
+3) Control/Sense parameters
+	DEFINITIONS:
+		CONTROL :=  #building_name# BUILDING #parameter_name# OF #appliance_name# [ #appliance_id# ] AS #new_value# ;
+	where 	#appliance_name# is a valid identifier
+		#building_name# is a valid identifier
+		#parameter_name# is a valid identifier
+		#appliance_id# is an integer
+		#new_value# is the new value of the parameter to control
+
+	eg.	CONTROL	:= L5 BUILDING Temprature OF AC[2] AS 18 ; 
+
+		
+	DEFINITIONS:
+		SENSE :=  #building_name# BUILDING #parameter_name# OF #appliance_name# [ #appliance_id# ] ;
+	where 	#appliance_name# is a valid identifier
+		#building_name# is a valid identifier
+		#parameter_name# is a valid identifier
+		#appliance_id# is an integer
+
+	eg.	SENSE := L5 BUILDING Temprature OF AC[2] ;
+
+
+______________________________________INPUT/OUTPUT FORMATS :_____________________________________________________________________
+
+i.   All white spaces are ignored except the ones between the syntax i.e. "IS A BUILDING HAVING" should contain no spaces in between.
+ii.  It is mandatory to end each line with a semi-colon (;) .
+iii. Order of definition 1 2 and 3 must be followed strictly.
+
+Also in the 19th line of the Controller.java, the path for the input file is set which can be modified.
+
+**************** Sample input file has been sent along with the code in the "sample_input" *********************
+
+_______________________________________WORKING OF THE CODE :____________________________________________________________________ 
+
+Grammer.g is a file written in ANTLR Tools intrepreter.
+It generates two java classes GrammerLexer.java and GrammerParser.java
+These classes make a parse tree Grammer.tokens using these classes.
+
+Appliance and Building classes are defined in the members section.
+The various methods in the grammer file are made to return appropriate values to make them controls and sense the parameters.
+
+
